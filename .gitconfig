@@ -1,0 +1,11 @@
+[user]
+	name = James Trinklein
+	email = jtrinklein@daptiv.com
+[mergetool "beyondcompare"]
+	cmd = /cygdrive/c/Program\\ Files\\ \\(x86\\)/Beyond\\ Compare\\ 3/bcomp.exe `cygpath -wa \"$LOCAL\"` `cygpath -wa \"$REMOTE\"` `cygpath -wa \"$BASE\"` `cygpath -wa \"$MERGED\"`
+[merge]
+	tool = beyondcompare
+[color]
+	ui = auto
+[push]
+	default = simple
