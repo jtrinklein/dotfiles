@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/src/dotfiles/helpers:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/src/dotfiles/helpers:/opt/boxen/bin:/usr/local/bin:$PATH
 autoload colors zsh/terminfo
 
 # Path to your oh-my-zsh configuration.
