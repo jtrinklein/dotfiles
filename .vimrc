@@ -1,7 +1,7 @@
 set nocompatible
 syntax on
 colorscheme molokai
-set ts=4 sts=4 sw=4 noexpandtab
+set ts=4 sts=4 sw=4 expandtab
 set autoindent
 set wildmode=full
 set wildmenu
