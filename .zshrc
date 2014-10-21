@@ -5,6 +5,8 @@ autoload colors zsh/terminfo
 # vagrant gh creds
 export gh_email="jtrinklein"
 export gh_password=`node ~/scripts/crypt.js -d 8d54ca48854a5ddb688baaeff561e17f e15695583d4410e539e14f420c94e531`
+export PHANTOMJS_BIN='/usr/local/bin/phantomjs'
+export DB_SERVER_NAME='VAGRANT-2008R2'
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -17,13 +19,8 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="better"
 #ZSH_THEME="agnoster"
 
-alias zedit="vim ~/.zshrc"
-alias zreload="source ~/.zshrc"
-
-alias gs="git status"
-alias gd="git diff $@"
-alias gdc="git diff --cached $@"
-alias gsu="git submodule update"
+# use better git prompt
+source ~/.zsh/git-prompt/zshrc.sh
 
 # red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -51,6 +48,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+
 export EDITOR='vim'
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -73,51 +71,39 @@ export EDITOR='vim'
 ## More documentation: 
 ## http://git.grml.org/?p=grml-etc-core.git;f=etc/zsh/zshrc;hb=HEAD#l1120
 ##
-CHPWD_PROFILE='default'
-function chpwd_profiles() {
-    local -x profile
 
-    zstyle -s ":chpwd:profiles:${PWD}" profile profile || profile='default'
-    if (( ${+functions[chpwd_profile_$profile]} )) ; then
-        chpwd_profile_${profile}
-    fi
-
-    CHPWD_PROFILE="${profile}"
-    return 0
-}
-chpwd_functions=( ${chpwd_functions} chpwd_profiles )
-
-
-#profile definitions
-zstyle ':chpwd:profiles:/Users/jtrinklein/Repos(|/|/*)'   profile personal
-
-#default profile
-chpwd_profile_default()
+#show/hide hidden folders
+showHiddenFolders()
 {
-    [[ ${profile} == ${CHPWD_PROFILE} ]] && unset PR_MSG && return 1
-    PR_MSG="Switching git profile: default"
-
-    rm ~/.ssh/id_rsa
-    rm ~/.ssh/id_rsa.pub
-    cp ~/.ssh/jtrinklein_rsa ~/.ssh/id_rsa
-    cp ~/.ssh/jtrinklein_rsa.pub ~/.ssh/id_rsa.pub
-    export GIT_AUTHOR_EMAIL="jtrinklein@daptiv.com"
-    export GIT_COMMITTER_EMAIL="jtrinklein@daptiv.com"
+    killall Finder
+    defaults write com.apple.finder AppleShowAllFiles 1
 }
 
-#personal profile
-chpwd_profile_personal()
+hideHiddenFolders()
 {
-    [[ ${profile} == ${CHPWD_PROFILE} ]] && unset PR_MSG && return 1
-    PR_MSG="Switching git profile: personal"
-    
-    rm ~/.ssh/id_rsa
-    rm ~/.ssh/id_rsa.pub
-    cp ~/.ssh/jamest_rsa ~/.ssh/id_rsa
-    cp ~/.ssh/jamest_rsa.pub ~/.ssh/id_rsa.pub
-
-    export GIT_AUTHOR_EMAIL="theotherjim@gmail.com"
-    export GIT_COMMITTER_EMAIL="theotherjim@gmail.com"
+    killall Finder
+    defaults write com.apple.finder AppleShowAllFiles 0
 }
 
-chpwd_profile_default # run DEFAULT profile automatically
+newbranch()
+{
+    git checkout -b $@
+    git push -u origin head
+}
+
+#set aliases
+alias zedit="vim ~/.zshrc"
+alias zreload="source ~/.zshrc"
+
+alias renpm="rm -rf ./node_modules ; npm install $@"
+alias spa="cd ~/src/PpmSpa"
+alias g="grunt $@"
+alias gs="git status"
+alias gd="git diff $@"
+alias gdc="git diff --cached $@"
+alias gsu="git submodule update"
+alias npmrepo="slc registry use $@"
+alias daptivnpm="npmrepo daptiv"
+alias defaultnpm="npmrepo default"
+alias mkpath="~/utils/python/mkpath.py $@"
+
