@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/src/dotfiles/helpers:/opt/boxen/bin:/usr/local/bin:$PATH:~/scripts
+export PATH=$HOME/bin:$HOME/src/dotfiles/helpers:/opt/boxen/bin:/usr/local/bin:$PATH:~/scripts:~/Android
 source ~/.bashrc
 autoload colors zsh/terminfo
 
@@ -6,7 +6,9 @@ autoload colors zsh/terminfo
 export gh_email="jtrinklein"
 export gh_password=`node ~/scripts/crypt.js -d 8d54ca48854a5ddb688baaeff561e17f e15695583d4410e539e14f420c94e531`
 export PHANTOMJS_BIN='/usr/local/bin/phantomjs'
-export DB_SERVER_NAME='VAGRANT-2008R2'
+export VM_HOSTNAME='WIN-2008R2SP1'
+export DB_SERVER_NAME=$VM_HOSTNAME
+export VM_VMX=`find ~/src/dev_ppm -name '*.vmx'`
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -89,6 +91,22 @@ newbranch()
 {
     git checkout -b $@
     git push -u origin head
+}
+
+rdp() {
+    if [[ -n $1 ]]; then
+        /Applications/Microsoft\ Remote\ Desktop.app/Contents/MacOS/Microsoft\ Remote\ Desktop $1
+    else
+        /Applications/Microsoft\ Remote\ Desktop.app/Contents/MacOS/Microsoft\ Remote\ Desktop ~/VM.rdp
+    fi
+}
+vm() { 
+    args="nogui"
+    if [[ -n $2 ]]; then
+        vmrun -T fusion $1 $VM_VMX nogui && rdp
+    else
+        vmrun -T fusion $1 $VM_VMX $args
+    fi
 }
 
 #set aliases
