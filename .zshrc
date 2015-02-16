@@ -8,7 +8,6 @@ export gh_password=`node ~/scripts/crypt.js -d 8d54ca48854a5ddb688baaeff561e17f 
 export PHANTOMJS_BIN='/usr/local/bin/phantomjs'
 export VM_HOSTNAME='WIN-2008R2SP1'
 export DB_SERVER_NAME=$VM_HOSTNAME
-export VM_VMX=`find ~/src/dev_ppm -name '*.vmx'`
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -27,20 +26,6 @@ source ~/.zsh/git-prompt/zshrc.sh
 # red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -50,29 +35,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-
 export EDITOR='vim'
-# export MANPATH="/usr/local/man:$MANPATH"
 
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-#directory profiles for git!
-#
-## Thanks to: Michael Prokop. 
-## More documentation: 
-## http://git.grml.org/?p=grml-etc-core.git;f=etc/zsh/zshrc;hb=HEAD#l1120
-##
+source ~/src/dotfiles/managevms.sh
 
 #show/hide hidden folders
 showHiddenFolders()
@@ -93,21 +58,6 @@ newbranch()
     git push -u origin head
 }
 
-rdp() {
-    if [[ -n $1 ]]; then
-        /Applications/Microsoft\ Remote\ Desktop.app/Contents/MacOS/Microsoft\ Remote\ Desktop $1
-    else
-        /Applications/Microsoft\ Remote\ Desktop.app/Contents/MacOS/Microsoft\ Remote\ Desktop ~/VM.rdp
-    fi
-}
-vm() { 
-    args="nogui"
-    if [[ -n $2 ]]; then
-        vmrun -T fusion $1 $VM_VMX nogui && rdp
-    else
-        vmrun -T fusion $1 $VM_VMX $args
-    fi
-}
 
 #set aliases
 alias zedit="vim ~/.zshrc"
