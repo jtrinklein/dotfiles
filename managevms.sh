@@ -1,4 +1,4 @@
-export DEV_VMX="$HOME/src/dev_ppm/.vagrant/machines/default/vmware_fusion/76259499-d23d-4a18-b78b-b02db77e121d/packer-vmware-vmx-1411665448.vmx"
+export DEV_VMX="$HOME/src/dev_ppm/.vagrant/machines/default/vmware_fusion/338335dd-f2aa-49b3-adeb-99f8c05e3d65/packer-vmware-vmx-1423696733.vmx"
 export IE9_VMX="$HOME/IE VMs/IE9 - Win7.vmwarevm/IE9 - Win7.vmx"
 export IE10_VMX="$HOME/IE VMs/IE10 - Win7.vmwarevm/IE10 - Win7.vmx"
 
