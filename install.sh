@@ -30,3 +30,6 @@ then
     git clone git@github.com:scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
 fi
 
+git config --global user.email "james.trinklein@changepoint.com"
+git config --global user.name "James Trinklein"
+git config --global push.default simple
