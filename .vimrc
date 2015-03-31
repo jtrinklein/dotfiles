@@ -1,6 +1,7 @@
 set nocompatible
 syntax on
 colorscheme molokai
+let g:molokai_original = 1
 set ts=4 sts=4 sw=4 expandtab
 set autoindent
 set wildmode=full

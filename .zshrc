@@ -4,7 +4,10 @@ autoload colors zsh/terminfo
 
 # vagrant gh creds
 export gh_email="jtrinklein"
-export gh_password=`node ~/scripts/crypt.js -d 8d54ca48854a5ddb688baaeff561e17f e15695583d4410e539e14f420c94e531`
+if [[ $OSTYPE = darwin* ]]
+then
+    export gh_password=`node ~/scripts/crypt.js -d 8d54ca48854a5ddb688baaeff561e17f e15695583d4410e539e14f420c94e531`
+fi
 export PHANTOMJS_BIN='/usr/local/bin/phantomjs'
 export VM_HOSTNAME='WIN-2008R2SP1'
 export DB_SERVER_NAME=$VM_HOSTNAME
@@ -17,11 +20,14 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="better"
-#ZSH_THEME="agnoster"
+#ZSH_THEME="better"
+ZSH_THEME="kiwi"
 
 # use better git prompt
-source ~/.zsh/git-prompt/zshrc.sh
+if [[ -e ~/.zsh/git-prompt/zshrc.sh ]]
+then
+    source ~/.zsh/git-prompt/zshrc.sh
+fi
 
 # red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -29,7 +35,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras knife lol nyan osx vagrant web-search)
+plugins=(git git-extras knife lol nyan battery vagrant web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -38,26 +44,6 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 
 source ~/src/dotfiles/managevms.sh
-
-#show/hide hidden folders
-showHiddenFolders()
-{
-    killall Finder
-    defaults write com.apple.finder AppleShowAllFiles 1
-}
-
-hideHiddenFolders()
-{
-    killall Finder
-    defaults write com.apple.finder AppleShowAllFiles 0
-}
-
-newbranch()
-{
-    git checkout -b $@
-    git push -u origin head
-}
-
 
 #set aliases
 alias zedit="vim ~/.zshrc"
