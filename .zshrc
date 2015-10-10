@@ -2,8 +2,6 @@ export PATH=$HOME/bin:$HOME/src/dotfiles/helpers:/opt/boxen/bin:/usr/local/bin:$
 source ~/.bashrc
 autoload colors zsh/terminfo
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
 
 # vagrant gh creds
 export gh_email="jtrinklein"
@@ -92,6 +90,10 @@ alias npmrepo="slc registry use $@"
 alias daptivnpm="npmrepo daptiv"
 alias defaultnpm="npmrepo default"
 alias mkpath="~/utils/python/mkpath.py $@"
+alias dc="docker-compose $@"
+alias dm="docker-machine $@"
+alias dms="docker-machine-set $@"
+
 
 getSpaVersion() {
     curl https://s3.amazonaws.com/ppmspa/version_dev.txt
@@ -138,3 +140,23 @@ importArduinoLibrary() {
     local srcPath=$2
     ln -s $2 $HOME/Documents/Arduino/library/$1
 }
+
+[ -s "/Users/jtrinklein/.dnx/dnvm/dnvm.sh" ] && . "/Users/jtrinklein/.dnx/dnvm/dnvm.sh" # Load dnvm
+[ -s "/opt/boxen/homebrew/Cellar/kvm/1.0.0-beta3/libexec/kvm.sh" ] && . "/opt/boxen/homebrew/Cellar/kvm/1.0.0-beta3/libexec/kvm.sh" # Load kvm
+
+code () {
+    if [[ $# = 0 ]]
+    then
+        open -a "Visual Studio Code"
+    else
+        [[ $1 = /* ]] && F="$1" || F="$PWD/${1#./}"
+        open -a "Visual Studio Code" --args "$F"
+    fi
+}
+
+docker-machine-set() {
+    local env=$1
+    eval $(docker-machine env $env)
+    echo $DOCKER_HOST
+}
+

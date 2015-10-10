@@ -9,8 +9,13 @@ set wildignore=*.resx,*.jpg,*.png,*.jpeg,*.gif,*.proj
 set path=**
 set suffixesadd=.cs,.aspx,.js,.rb
 set number
+let NERDTreeShowHidden=1
 execute pathogen#infect()
 filetype plugin indent on
+map mj :m .-2<CR>
+map <S-Up> mj
+map mk :m .+1<CR>
+map <S-Down> mk
 map <C-o> :NERDTreeToggle<CR>
 set mouse=a
 map <ScrollWheelUp> <C-Y>
