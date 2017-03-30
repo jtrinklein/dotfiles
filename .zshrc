@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/src/dotfiles/helpers:/opt/boxen/bin:/usr/local/bin:$PATH:~/scripts:~/Android
+export PATH=$HOME/bin:$HOME/src/dotfiles/helpers:/opt/boxen/bin:/usr/local/bin:$PATH:~/scripts:~/Android:/$HOME/apache-maven-3.3.9/bin
 source ~/.bashrc
 autoload colors zsh/terminfo
 
@@ -45,13 +45,14 @@ export EDITOR='vim'
 
 source ~/src/dotfiles/managevms.sh
 
+
 #set aliases
 alias zedit="vim ~/.zshrc"
 alias zreload="source ~/.zshrc"
 
 alias renpm="rm -rf ./node_modules ; npm install $@"
 alias spa="cd ~/src/PpmSpa"
-alias g="grunt $@"
+alias g="gulp $@"
 alias gs="git status"
 alias gd="git diff $@"
 alias gdc="git diff --cached $@"
@@ -60,4 +61,15 @@ alias npmrepo="slc registry use $@"
 alias daptivnpm="npmrepo daptiv"
 alias defaultnpm="npmrepo default"
 alias mkpath="~/utils/python/mkpath.py $@"
+alias split="java -jar ~/llanfair/Llanfair.jar"
+alias dc="docker-compose $@"
+
+eval $(thefuck --alias)
+alias f="fuck"
+
+export PPM_VM_IP=192.168.56.101
+
+export GH_API_TOKEN="60b4cbf182aca28d9d1f6d58c31360fecb85010b"
+export GH_USER="jtrinklein"
+export GH_AUTH="${GH_USER}${GH_API_TOKEN}"
 

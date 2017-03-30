@@ -30,6 +30,11 @@ then
     git clone git@github.com:scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
 fi
 
+if [[ "$(which slc)" == "slc not found" ]]; then
+    npm install -g strongloop
+    slc registry add daptivnpm http://artrepo.daptiv.com:8081/artifactory/api/npm/npm-virtual
+fi
+
 git config --global user.email "james.trinklein@changepoint.com"
 git config --global user.name "James Trinklein"
 git config --global push.default simple

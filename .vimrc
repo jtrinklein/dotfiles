@@ -13,9 +13,10 @@ set number
 execute pathogen#infect()
 filetype plugin indent on
 map <C-o> :NERDTreeToggle<CR>
-set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>
+nnoremap mk :m .-2<CR>==
+nnoremap mj :m .+1<CR>==
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k

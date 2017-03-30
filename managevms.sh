@@ -1,4 +1,4 @@
-export DEV_VMX="$HOME/src/dev_ppm/.vagrant/machines/default/vmware_fusion/338335dd-f2aa-49b3-adeb-99f8c05e3d65/packer-vmware-vmx-1423696733.vmx"
+export DEV_VMX="$HOME/src/dev_ppm/.vagrant/machines/default/vmware_fusion/073bcdd7-104b-4146-ae7c-a727773daff0/packer-vmware-vmx-{{timestamp}}.vmx"
 export IE9_VMX="$HOME/IE VMs/IE9 - Win7.vmwarevm/IE9 - Win7.vmx"
 export IE10_VMX="$HOME/IE VMs/IE10 - Win7.vmwarevm/IE10 - Win7.vmx"
 
@@ -38,7 +38,7 @@ vm() {
             ;;
     esac
     #echo "vmrun -T fusion $1 $vmx $args"
-    vmrun -T fusion $command $vmx $args
+    /Applications/VMware\ Fusion.app/Contents/Library/vmrun -T fusion $command $vmx $args
 }
 
 export findVms
