@@ -7,7 +7,14 @@ fi
 
 if [[ ! -e $HOME/.zshrc ]]
 then
-    ln -s $HOME/.zshrc $DOTHOME/.zshrc
+    ln -s $DOTHOME/.zshrc $HOME/.zshrc
+fi
+
+mkdir -p $HOME/.atom
+if [[ ! -e $HOME/.atom/keymap.cson ]]
+then
+    echo "linking atom keymap.cson..."
+    ln -s $DOTHOME/keymap.cson $HOME/.atom/keymap.cson
 fi
 
 
