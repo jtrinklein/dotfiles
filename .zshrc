@@ -63,6 +63,7 @@ alias defaultnpm="npmrepo default"
 alias mkpath="~/utils/python/mkpath.py $@"
 alias split="java -jar ~/llanfair/Llanfair.jar"
 alias dc="docker-compose $@"
+alias apiwatch="g watch --color | node_modules/.bin/bunyan"
 
 eval $(thefuck --alias)
 alias f="fuck"
