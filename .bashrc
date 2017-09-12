@@ -1,4 +1,7 @@
-
+#don't run on osx, only windows
+if [ "$(uname)" = "Darwin" ] ; then
+    return
+fi
 # If not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 

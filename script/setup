@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+export DOTHOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+$DOTHOME/install-oh-my-zsh.sh
+$DOTHOME/install.sh
+

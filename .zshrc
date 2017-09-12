@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/src/dotfiles/helpers:/opt/boxen/bin:/usr/local/bin:$PATH:~/scripts:~/Android:/$HOME/apache-maven-3.3.9/bin
+export PATH=$HOME/bin:$HOME/src/dotfiles/helpers:$HOME/.pyenv/shims:/opt/boxen/bin:/usr/local/bin:$PATH:~/scripts:~/Android
 source ~/.bashrc
 autoload colors zsh/terminfo
 
@@ -8,7 +8,8 @@ if [[ $OSTYPE = darwin* ]]
 then
     export gh_password=`node ~/scripts/crypt.js -d 8d54ca48854a5ddb688baaeff561e17f e15695583d4410e539e14f420c94e531`
 fi
-export PHANTOMJS_BIN='/usr/local/bin/phantomjs'
+export DEFAULT_VAGRANT_PROVIDER=virtualbox
+export PHANTOMJS_BIN='/opt/boxen/phantomenv/shims/phantomjs'
 export VM_HOSTNAME='WIN-2008R2SP1'
 export DB_SERVER_NAME=$VM_HOSTNAME
 
@@ -35,7 +36,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras knife lol nyan battery vagrant web-search)
+plugins=(git git-extras git-flow-completion knife lol nyan battery vagrant web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,6 +45,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 
 source ~/src/dotfiles/managevms.sh
+source ~/src/dotfiles/helpers/boards.sh
 
 
 #set aliases
