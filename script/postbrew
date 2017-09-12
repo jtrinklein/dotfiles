@@ -1,4 +1,15 @@
 #!/usr/bin/env bash
 
+# source bash profile to get environment variables set
+[ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
+
+# set default shell to zsh
 chsh -s /usr/local/bin/zsh
+
+
+# Install Daptiv Projects --------------
+SETUP_SCRIPT="$HOME/.daptiv-dotfiles/projects/setup"
+
+# TTM -----
+[ -f "$SETUP_SCRIPT" ] && bash "$SETUP_SCRIPT" ttm
 
