@@ -9,3 +9,8 @@ brew "tmux"
 brew "wget"
 brew "wine"
 brew "zsh"
+brew "zsh-completions"
+
+cask "dropbox"
+cask "opera"
+cask "vlc"
