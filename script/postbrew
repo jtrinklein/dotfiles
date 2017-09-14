@@ -3,9 +3,9 @@
 # source bash profile to get environment variables set
 [ -f "$HOME/.bash_profile" ] && source "$HOME/.bash_profile"
 
-if ! dscl . -read "$HOME" | grep -q -E "UserShell: /bin/zsh"; then
+if ! dscl . -read "$HOME" UserShell | grep -q -E "zsh"; then
   # set default shell to zsh
-  chsh -s /bin/zsh
+  chsh -s /bin/zsh $USER
 fi
 
 
