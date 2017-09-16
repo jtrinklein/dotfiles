@@ -10,6 +10,11 @@ then
     ln -s $HOME/.zshrc $DOTHOME/.zshrc
 fi
 
+if [[ ! -e $HOME/.tmux.conf ]]
+then
+    ln -s $HOME/.tmux.conf $DOTHOME/.tmux.conf
+fi
+
 OSNAME="$(uname -s)"
 if [ "$OSNAME" = "Darwin" ]; then
   mkdir -p "$HOME/Library/KeyBindings"
