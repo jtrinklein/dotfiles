@@ -1,0 +1,13 @@
+{
+/* home key move to beginning of line */
+"\UF729" = "moveToBeginningOfLine:";
+/* end key move to beginning of line */
+"\UF72B" = "moveToEndOfLine:";
+/* shift+home move to beginning and select */
+"$\UF729" = "moveToBeginningOfLineAndModifySelection:";
+/* shift+end move to beginning and select */
+"$\UF72B" = "moveToEndOfLineAndModifySelection:";
+"^@\UF701" = "noop:";
+"^@\UF702" = "noop:";
+"^@\UF703" = "noop:";
+}

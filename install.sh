@@ -7,16 +7,14 @@ fi
 
 if [[ ! -e $HOME/.zshrc ]]
 then
-    ln -s $DOTHOME/.zshrc $HOME/.zshrc
+    ln -s $HOME/.zshrc $DOTHOME/.zshrc
 fi
 
-mkdir -p $HOME/.atom
-if [[ ! -e $HOME/.atom/keymap.cson ]]
-then
-    echo "linking atom keymap.cson..."
-    ln -s $DOTHOME/keymap.cson $HOME/.atom/keymap.cson
+OSNAME="$(uname -s)"
+if [ "$OSNAME" = "Darwin" ]; then
+  mkdir -p "$HOME/Library/KeyBindings"
+  cp "$DOTHOME/DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/"
 fi
-
 
 mkdir -p $HOME/.vim/{autoload,bundle,colors}
 if [[ ! -e $HOME/.vim/autoload/pathogen.vim ]]
