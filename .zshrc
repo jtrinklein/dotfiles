@@ -1,7 +1,10 @@
-export PATH=$HOME/bin:$HOME/src/dotfiles/helpers:$HOME/.pyenv/shims:/opt/boxen/bin:/usr/local/bin:$PATH:~/scripts:~/Android
+export DOTHOME="$( cd -P "$( dirname "$(readlink -n "$0" )" )" && pwd )"
+
+export PATH=$HOME/bin:$DOTHOME/helpers:$HOME/.pyenv/shims:/opt/boxen/bin:/usr/local/bin:$PATH:~/scripts:~/Android
 #source ~/.bashrc
 source ~/.bash_profile
-autoload colors zsh/terminfo
+export FPATH=$FPATH:$DOTHOME/zshfunctions
+autoload colors zsh/terminfo prettypath
 
 # vagrant gh creds
 export gh_email="jtrinklein"

@@ -1,0 +1,2 @@
+SEARCH_STR="$1"
+echo $PATH | awk "{ split(\$0, lines, \":\"); for (i in lines) { line = lines[i]; if (line == \"$SEARCH_STR\") { print \"\033[33m\" \">\" line \"\033[0m\"; } else { print line; } } }"
