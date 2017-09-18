@@ -13,6 +13,7 @@ function ensure_link() {
 
 ensure_link ".zshrc"
 ensure_link ".tmux.conf"
+ensure_link ".Brewfile"
 
 OSNAME="$(uname -s)"
 if [ "$OSNAME" = "Darwin" ]; then
