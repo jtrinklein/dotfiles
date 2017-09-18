@@ -3,15 +3,16 @@
 DIR="$( cd -P "$( dirname "$( readlink "${BASH_SOURCE[0]}" )" )" && pwd )"
 export DOTHOME="${DOTHOME:-$DIR}"
 
-if [[ ! -e $HOME/.zshrc ]]
-then
-    ln -s $DOTHOME/.zshrc $HOME/.zshrc
-fi
+function ensure_link() {
+  name=$1
+  homefile="$HOME/$name"
+  dotfile="$DOTHOME/$name"
+  
+  ln -sfv "$dotfile" "$homefile"
+}
 
-if [[ ! -e $HOME/.tmux.conf ]]
-then
-    ln -s $DOTHOME/.tmux.conf $HOME/.tmux.conf
-fi
+ensure_link ".zshrc"
+ensure_link ".tmux.conf"
 
 OSNAME="$(uname -s)"
 if [ "$OSNAME" = "Darwin" ]; then
