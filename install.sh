@@ -1,18 +1,16 @@
 #!/bin/bash
 
-if [[ -z "$DOTHOME" ]]
-then
-    export DOTHOME=$HOME/src/dotfiles
-fi
+DIR="$( cd -P "$( dirname "$( readlink "${BASH_SOURCE[0]}" )" )" && pwd )"
+export DOTHOME="${DOTHOME:-$DIR}"
 
 if [[ ! -e $HOME/.zshrc ]]
 then
-    ln -s $HOME/.zshrc $DOTHOME/.zshrc
+    ln -s $DOTHOME/.zshrc $HOME/.zshrc
 fi
 
 if [[ ! -e $HOME/.tmux.conf ]]
 then
-    ln -s $HOME/.tmux.conf $DOTHOME/.tmux.conf
+    ln -s $DOTHOME/.tmux.conf $HOME/.tmux.conf
 fi
 
 OSNAME="$(uname -s)"

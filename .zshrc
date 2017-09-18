@@ -1,4 +1,11 @@
-export DOTHOME="$( cd -P "$( dirname "$(readlink -n "$0" )" )" && pwd )"
+# Here % indicates prompt expansion on the value, 
+# %N indicates "The name of the script, sourced file,
+# or shell function that zsh is currently executing,
+# whichever was started most recently. If there is none,
+# this is equivalent to the parameter $0."(from man zshmisc)
+
+SOURCE="${(%):-%N}"
+export DOTHOME="$( cd -P "$( dirname "$( readlink "$SOURCE" )" )" && pwd )"
 
 export PATH=$HOME/bin:$DOTHOME/helpers:$HOME/.pyenv/shims:/opt/boxen/bin:/usr/local/bin:$PATH:~/scripts:~/Android
 #source ~/.bashrc
@@ -29,6 +36,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="kiwi"
 
 # use better git prompt
+# https://github.com/olivierverdier/zsh-git-prompt
 if [[ -e ~/.zsh/git-prompt/zshrc.sh ]]
 then
     source ~/.zsh/git-prompt/zshrc.sh
@@ -40,7 +48,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras git-flow-completion knife lol nyan battery vagrant web-search)
+plugins=(git git-extras git-flow-completion nyan battery vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -48,9 +56,8 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
-source ~/src/dotfiles/managevms.sh
-source ~/src/dotfiles/helpers/boards.sh
-
+source "$DOTHOME/managevms.sh"
+source "$DOTHOME/helpers/boards.sh"
 
 #set aliases
 alias zedit="vim ~/.zshrc"
@@ -66,7 +73,6 @@ alias gsu="git submodule update"
 alias npmrepo="slc registry use $@"
 alias daptivnpm="npmrepo daptiv"
 alias defaultnpm="npmrepo default"
-alias mkpath="~/utils/python/mkpath.py $@"
 alias split="java -jar ~/llanfair/Llanfair.jar"
 alias dc="docker-compose $@"
 alias apiwatch="g watch --color | node_modules/.bin/bunyan"
@@ -75,8 +81,4 @@ eval $(thefuck --alias)
 alias f="fuck"
 
 export PPM_VM_IP=192.168.56.101
-
-export GH_API_TOKEN="60b4cbf182aca28d9d1f6d58c31360fecb85010b"
-export GH_USER="jtrinklein"
-export GH_AUTH="${GH_USER}${GH_API_TOKEN}"
 
