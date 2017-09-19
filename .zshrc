@@ -7,7 +7,7 @@
 SOURCE="${(%):-%N}"
 export DOTHOME="$( cd -P "$( dirname "$( readlink "$SOURCE" )" )" && pwd )"
 
-export PATH=$HOME/bin:$DOTHOME/helpers:$HOME/.pyenv/shims:/opt/boxen/bin:/usr/local/bin:$PATH:~/scripts:~/Android
+export PATH=$HOME/bin:$DOTHOME/helpers:$HOME/.pyenv/shims:$HOME/.nodenv/shims:/usr/local/bin:/opt/boxen/bin:$PATH
 #source ~/.bashrc
 source ~/.bash_profile
 export FPATH=$FPATH:$DOTHOME/zshfunctions
@@ -17,7 +17,8 @@ autoload colors zsh/terminfo prettypath
 export gh_email="jtrinklein"
 if [[ $OSTYPE = darwin* ]] && [ -f "$HOME/scripts/crypt.js" ]
 then
-    export gh_password=`node ~/scripts/crypt.js -d 8d54ca48854a5ddb688baaeff561e17f e15695583d4410e539e14f420c94e531`
+    #export gh_password=`node ~/scripts/crypt.js -d 8d54ca48854a5ddb688baaeff561e17f e15695583d4410e539e14f420c94e531`
+
 fi
 export DEFAULT_VAGRANT_PROVIDER=virtualbox
 export PHANTOMJS_BIN='/opt/boxen/phantomenv/shims/phantomjs'

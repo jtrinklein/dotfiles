@@ -3,7 +3,7 @@ export IE10_VMX="$HOME/IE VMs/IE10 - Win7.vmwarevm/IE10 - Win7.vmx"
 export DEV_VM_ID="{468872a7-c090-48e8-b2e2-63e4e75a83a3}"
 
 findVms() {
-    DEV_VM_ID=`VBoxManage list vms | awk '/devbox/ { print $2 }'`
+    DEV_VM_ID=`VBoxManage list vms | awk '/dev[box|_ppm]/ { print $2 }'`
     DEV_VMX=`find ~/src/dev_ppm -name '*.vmx'`
     IE9_VMX=`find ~/IE\ VMs -name 'IE9*.vmx'`
     IE10_VMX=`find ~/IE\ VMs -name 'IE10*.vmx'`
