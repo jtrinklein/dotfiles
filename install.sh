@@ -12,6 +12,7 @@ function ensure_link() {
 }
 
 ensure_link ".zshrc"
+ensure_link ".vimrc"
 ensure_link ".tmux.conf"
 ensure_link ".Brewfile"
 
