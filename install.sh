@@ -12,16 +12,21 @@ function ensure_link() {
 }
 mkdir -p ~/.atom
 
+#setup links
 ensure_link ".zshrc"
 ensure_link ".vimrc"
 ensure_link ".tmux.conf"
 ensure_link ".Brewfile"
 ln -sfv "$DOTHOME/keymap.cson" "$HOME/.atom/keymap.cson"
 
+#install atom packages
+apm install cursor-history
+
+
 OSNAME="$(uname -s)"
 if [ "$OSNAME" = "Darwin" ]; then
-  mkdir -p "$HOME/Library/KeyBindings"
-  cp "$DOTHOME/DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/"
+    echo "configuring preferences for macos..."
+    bash "$DOTHOME/setup-osx-preferences.sh"
 fi
 
 mkdir -p $HOME/.vim/{autoload,bundle,colors}
