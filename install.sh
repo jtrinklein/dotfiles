@@ -29,6 +29,12 @@ then
     curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 fi
 
+if ! [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+else
+    ( cd $HOME/.vim/bundle/Vundle.vim && git pull )
+fi
+
 if [[ ! -e $HOME/.vim/colors/molokai.vim ]]
 then
     echo "downloading molokai theme for vim"
