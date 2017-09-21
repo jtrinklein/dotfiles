@@ -10,11 +10,13 @@ function ensure_link() {
   
   ln -sfv "$dotfile" "$homefile"
 }
+mkdir -p ~/.atom
 
 ensure_link ".zshrc"
 ensure_link ".vimrc"
 ensure_link ".tmux.conf"
 ensure_link ".Brewfile"
+ln -sfv "$DOTHOME/keymap.cson" "$HOME/.atom/keymap.cson"
 
 OSNAME="$(uname -s)"
 if [ "$OSNAME" = "Darwin" ]; then
