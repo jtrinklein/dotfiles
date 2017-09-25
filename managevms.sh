@@ -1,6 +1,6 @@
 export DEV_VMX="$HOME/src/dev_ppm/.vagrant/machines/default/vmware_fusion/538097f6-4aa0-48fa-bea7-fb129cd997a4/packer-vmware-vmx-{{timestamp}}.vmx"
 export IE10_VMX="$HOME/IE VMs/IE10 - Win7.vmwarevm/IE10 - Win7.vmx"
-export DEV_VM_ID="{468872a7-c090-48e8-b2e2-63e4e75a83a3}"
+export DEV_VM_ID="{453cad7e-9deb-49d8-9ad9-b067389ff487}"
 
 findVms() {
     DEV_VM_ID=`VBoxManage list vms | awk '/dev[box|_ppm]/ { print $2 }'`
