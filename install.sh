@@ -7,7 +7,7 @@ function ensure_link() {
   name=$1
   homefile="$HOME/$name"
   dotfile="$DOTHOME/$name"
-  
+
   ln -sfv "$dotfile" "$homefile"
 }
 mkdir -p ~/.atom
@@ -21,12 +21,22 @@ ln -sfv "$DOTHOME/keymap.cson" "$HOME/.atom/keymap.cson"
 
 #install atom packages
 apm install cursor-history
+apm install intentions
+apm install busy-signal
+apm install linter-ui-default
+apm install linter
+apm install atom-typescript
 
 
 OSNAME="$(uname -s)"
 if [ "$OSNAME" = "Darwin" ]; then
     echo "configuring preferences for macos..."
     bash "$DOTHOME/setup-osx-preferences.sh"
+fi
+
+mkdir -p $HOME/.tmux/plugins
+if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
+  git clone git@github.com:tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 fi
 
 mkdir -p $HOME/.vim/{autoload,bundle,colors}
