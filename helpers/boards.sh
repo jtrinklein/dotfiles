@@ -1,7 +1,7 @@
 SESSION=$USER
 
-PTB_CLIENT="$HOME/src/ptb-client"
-PTB_API="$HOME/src/ptb-api"
+PTB_CLIENT="$HOME/src/project-team-board"
+PTB_API="$HOME/src/project-task-board-api"
 
 start_boards() {
     tmux -2 new-session -d -s $SESSION
@@ -32,7 +32,7 @@ start_boards() {
     tmux select-pane -t 0
     # run the client
     tmux send-keys "cd $PTB_CLIENT" C-m
-    tmux send-keys "yarn start" C-m
+    tmux send-keys "yarn run start" C-m
 
     tmux select-pane -t 1
     
