@@ -83,3 +83,10 @@ alias f="fuck"
 
 export PPM_VM_IP=192.168.56.101
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/jtrinklein/.nodenv/versions/6.10.2/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/jtrinklein/.nodenv/versions/6.10.2/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/jtrinklein/.nodenv/versions/6.10.2/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/jtrinklein/.nodenv/versions/6.10.2/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
