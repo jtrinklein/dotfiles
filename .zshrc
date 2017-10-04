@@ -7,7 +7,7 @@
 SOURCE="${(%):-%N}"
 export DOTHOME="$( cd -P "$( dirname "$( readlink "$SOURCE" )" )" && pwd )"
 
-export PATH=$HOME/.nodenv/shims:$HOME/bin:$DOTHOME/helpers:$HOME/.pyenv/shims:/usr/local/bin:/opt/boxen/bin:$PATH
+export PATH=$HOME/.nodenv/shims:$HOME/bin:$DOTHOME/helpers:$HOME/.pyenv/shims:/usr/local/bin:/opt/boxen/bin:$PATH:$HOME/Library/Android/sdk/platform-tools
 #source ~/.bashrc
 source ~/.bash_profile
 export FPATH=$FPATH:$DOTHOME/zshfunctions
@@ -81,7 +81,7 @@ alias apiwatch="g watch --color | node_modules/.bin/bunyan"
 eval $(thefuck --alias)
 alias f="fuck"
 
-export PPM_VM_IP=192.168.56.101
+export PPM_VM_IP=192.168.57.101
 
 
 # tabtab source for serverless package
