@@ -26,6 +26,7 @@ apm install busy-signal
 apm install linter-ui-default
 apm install linter
 apm install atom-typescript
+apm install editorconfig
 
 
 OSNAME="$(uname -s)"
