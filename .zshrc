@@ -21,7 +21,7 @@ then
 
 fi
 export DEFAULT_VAGRANT_PROVIDER=virtualbox
-export PHANTOMJS_BIN='/opt/boxen/phantomenv/shims/phantomjs'
+#export PHANTOMJS_BIN='/opt/boxen/phantomenv/shims/phantomjs'
 export VM_HOSTNAME='WIN-2008R2SP1'
 export DB_SERVER_NAME=$VM_HOSTNAME
 
