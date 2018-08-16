@@ -17,3 +17,6 @@ cask "opera"
 cask "private-internet-access"
 cask "vlc"
 cask "the-unarchiver"
+cask "skitch"
+
+

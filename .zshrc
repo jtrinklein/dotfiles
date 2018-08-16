@@ -1,4 +1,4 @@
-# Here % indicates prompt expansion on the value, 
+# Here % indicates prompt expansion on the value,
 # %N indicates "The name of the script, sourced file,
 # or shell function that zsh is currently executing,
 # whichever was started most recently. If there is none,
@@ -7,9 +7,10 @@
 SOURCE="${(%):-%N}"
 export DOTHOME="$( cd -P "$( dirname "$( readlink "$SOURCE" )" )" && pwd )"
 
-export PATH=$HOME/.nodenv/shims:$HOME/bin:$DOTHOME/helpers:$HOME/.pyenv/shims:/usr/local/bin:/opt/boxen/bin:$PATH:$HOME/Library/Android/sdk/platform-tools
+export PATH=$HOME/.rbenv/shims:$HOME/bin:$DOTHOME/helpers:$HOME/.pyenv/shims:/usr/local/bin:/opt/boxen/bin:$PATH:$HOME/Library/Android/sdk/platform-tools
 #source ~/.bashrc
 source ~/.bash_profile
+#source ~/.emsdk/emsdk_env.sh
 export FPATH=$FPATH:$DOTHOME/zshfunctions
 autoload colors zsh/terminfo prettypath
 
@@ -59,6 +60,17 @@ export EDITOR='vim'
 
 source "$DOTHOME/managevms.sh"
 source "$DOTHOME/helpers/boards.sh"
+source "$DOTHOME/helpers/dashboard.sh"
+source "$DOTHOME/helpers/gi.sh"
+
+# -------------------//////// BIT STUFF //////////////
+source "${HOME}/bit-env-setup.sh"
+export APACHE_HOME=/etc/apache2
+export DOCUMENT_HOME=/Library/WebServer/Documents
+export STATIC_HOME="$HOME/src/bit/frontend/bitapp-static"
+# -------------------//////// BIT STUFF //////////////
+
+
 
 #set aliases
 alias zedit="vim ~/.zshrc"
@@ -77,6 +89,25 @@ alias defaultnpm="npmrepo default"
 alias split="java -jar ~/llanfair/Llanfair.jar"
 alias dc="docker-compose $@"
 alias apiwatch="g watch --color | node_modules/.bin/bunyan"
+alias llanfair="cd ~/Applications/llanfair && java -jar ~/Applications/llanfair/Llanfair.jar && cd -"
+
+
+# remove md alias from zsh
+unalias md
+function md() {
+    case $1 in
+        up)
+            ssh administrator@macdaddy.hq.daptiv.com uptime
+            ;;
+        reboot)
+            ssh -t administrator@macdaddy.hq.daptiv.com sudo reboot now
+            ;;
+        *)
+            ssh -t administrator@macdaddy.hq.daptiv.com $@
+            ;;
+    esac
+}
+export md
 
 eval $(thefuck --alias)
 alias f="fuck"

@@ -13,5 +13,8 @@ fi
 SETUP_SCRIPT="$HOME/.daptiv-dotfiles/projects/setup"
 
 # TTM -----
-[ -f "$SETUP_SCRIPT" ] && bash "$SETUP_SCRIPT" ttm
+if [ -f "$SETUP_SCRIPT" ]; then
+    bash "$SETUP_SCRIPT" ttm
+    bash "$SETUP_SCRIPT" new-feature-popup
+fi
 
