@@ -16,15 +16,13 @@ autoload colors zsh/terminfo prettypath
 
 # vagrant gh creds
 export gh_email="jtrinklein"
-if [[ $OSTYPE = darwin* ]] && [ -f "$HOME/scripts/crypt.js" ]
-then
-    #export gh_password=`node ~/scripts/crypt.js -d 8d54ca48854a5ddb688baaeff561e17f e15695583d4410e539e14f420c94e531`
-
-fi
 export DEFAULT_VAGRANT_PROVIDER=virtualbox
 #export PHANTOMJS_BIN='/opt/boxen/phantomenv/shims/phantomjs'
 export VM_HOSTNAME='WIN-2008R2SP1'
 export DB_SERVER_NAME=$VM_HOSTNAME
+
+# do not auto change the titles
+#DISABLE_AUTO_TITLE="true"
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -50,7 +48,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras git-flow-completion nyan battery vagrant)
+plugins=(git git-extras git-flow-completion battery vagrant)
 
 source $ZSH/oh-my-zsh.sh
 

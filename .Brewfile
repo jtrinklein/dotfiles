@@ -8,7 +8,6 @@ brew "thefuck"
 brew "tmux"
 brew "wget"
 cask "xquartz"
-brew "wine"
 brew "zsh"
 brew "zsh-completions"
 

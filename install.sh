@@ -18,6 +18,7 @@ ensure_link ".vimrc"
 ensure_link ".tmux.conf"
 ensure_link ".Brewfile"
 ln -sfv "$DOTHOME/keymap.cson" "$HOME/.atom/keymap.cson"
+ln -sfv "$DOTHOME/snippets.cson" "$HOME/.atom/snippets.cson"
 
 #install atom packages
 apm install cursor-history
