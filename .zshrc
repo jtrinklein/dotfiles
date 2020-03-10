@@ -90,7 +90,7 @@ alias split="java -jar ~/llanfair/Llanfair.jar"
 alias dc="docker-compose $@"
 alias apiwatch="g watch --color | node_modules/.bin/bunyan"
 alias llanfair="cd ~/Applications/llanfair && java -jar ~/Applications/llanfair/Llanfair.jar && cd -"
-
+alias ra="~/.dotfiles/random-animal-starting-with.py $@"
 
 # remove md alias from zsh
 unalias md
