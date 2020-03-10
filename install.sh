@@ -10,24 +10,23 @@ function ensure_link() {
 
   ln -sfv "$dotfile" "$homefile"
 }
-mkdir -p ~/.atom
 
 #setup links
 ensure_link ".zshrc"
 ensure_link ".vimrc"
 ensure_link ".tmux.conf"
 ensure_link ".Brewfile"
-ln -sfv "$DOTHOME/keymap.cson" "$HOME/.atom/keymap.cson"
-ln -sfv "$DOTHOME/snippets.cson" "$HOME/.atom/snippets.cson"
+#ln -sfv "$DOTHOME/keymap.cson" "$HOME/.atom/keymap.cson"
+#ln -sfv "$DOTHOME/snippets.cson" "$HOME/.atom/snippets.cson"
 
 #install atom packages
-apm install cursor-history
-apm install intentions
-apm install busy-signal
-apm install linter-ui-default
-apm install linter
-apm install atom-typescript
-apm install editorconfig
+#apm install cursor-history
+#apm install intentions
+#apm install busy-signal
+#apm install linter-ui-default
+#apm install linter
+#apm install atom-typescript
+#apm install editorconfig
 
 
 OSNAME="$(uname -s)"
@@ -66,11 +65,17 @@ then
     git clone git@github.com:scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree
 fi
 
+if [[ ! -d $HOME/.vim/bundle/surround ]]
+then
+    echo "downloading surround plugin"
+    git clone git@github.com:tpope/vim-surround.git $HOME/.vim/bundle/surround
+fi
+
 if [[ "$(which slc)" == "slc not found" ]]; then
     npm install -g strongloop
     slc registry add daptivnpm http://artrepo.daptiv.com:8081/artifactory/api/npm/npm-virtual
 fi
 
-git config --global user.email "james.trinklein@changepoint.com"
+git config --global user.email "1398935+jtrinklein@users.noreply.github.com"
 git config --global user.name "James Trinklein"
 git config --global push.default simple

@@ -10,6 +10,7 @@ export DOTHOME="$( cd -P "$( dirname "$( readlink "$SOURCE" )" )" && pwd )"
 export PATH=$HOME/.rbenv/shims:$HOME/bin:$DOTHOME/helpers:$HOME/.pyenv/shims:/usr/local/bin:/opt/boxen/bin:$PATH:$HOME/Library/Android/sdk/platform-tools
 #source ~/.bashrc
 source ~/.bash_profile
+#export SRC_DIR=$HOME/src/bit-src
 #source ~/.emsdk/emsdk_env.sh
 export FPATH=$FPATH:$DOTHOME/zshfunctions
 autoload colors zsh/terminfo prettypath
@@ -18,7 +19,7 @@ autoload colors zsh/terminfo prettypath
 export gh_email="jtrinklein"
 export DEFAULT_VAGRANT_PROVIDER=virtualbox
 #export PHANTOMJS_BIN='/opt/boxen/phantomenv/shims/phantomjs'
-export VM_HOSTNAME='WIN-2008R2SP1'
+export VM_HOSTNAME='WIN2016'
 export DB_SERVER_NAME=$VM_HOSTNAME
 
 # do not auto change the titles
@@ -48,7 +49,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras git-flow-completion battery vagrant)
+plugins=(git git-extras battery vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -61,12 +62,12 @@ source "$DOTHOME/helpers/boards.sh"
 source "$DOTHOME/helpers/dashboard.sh"
 source "$DOTHOME/helpers/gi.sh"
 
-# -------------------//////// BIT STUFF //////////////
+# -------------------//////// Barometer STUFF //////////////
 source "${HOME}/bit-env-setup.sh"
 export APACHE_HOME=/etc/apache2
 export DOCUMENT_HOME=/Library/WebServer/Documents
 export STATIC_HOME="$HOME/src/bit/frontend/bitapp-static"
-# -------------------//////// BIT STUFF //////////////
+# -------------------//////// Barometer STUFF //////////////
 
 
 
@@ -81,6 +82,7 @@ alias gs="git status"
 alias gd="git diff $@"
 alias gdc="git diff --cached $@"
 alias gsu="git submodule update"
+alias gc="git commit -v -S4F29539B17008B95 $@"
 alias npmrepo="slc registry use $@"
 alias daptivnpm="npmrepo daptiv"
 alias defaultnpm="npmrepo default"
@@ -92,25 +94,36 @@ alias llanfair="cd ~/Applications/llanfair && java -jar ~/Applications/llanfair/
 
 # remove md alias from zsh
 unalias md
-function md() {
+function mdc() {
+    local host="$1"
+    shift
     case $1 in
         up)
-            ssh administrator@macdaddy.hq.daptiv.com uptime
+            ssh administrator@${host} uptime
             ;;
         reboot)
-            ssh -t administrator@macdaddy.hq.daptiv.com sudo reboot now
+            ssh -t administrator@${host} sudo reboot now
             ;;
         *)
-            ssh -t administrator@macdaddy.hq.daptiv.com $@
+            ssh -t administrator@${host} $@
             ;;
     esac
 }
+function md() {
+    mdc macdaddy.hq.daptiv.com $@
+}
+function md2() {
+    mdc macdaddy2.daptiv.com $@
+}
+
 export md
+export md2
 
 eval $(thefuck --alias)
 alias f="fuck"
 
-export PPM_VM_IP=192.168.57.101
+export GPG_TTY=$(tty)
+
 
 
 # tabtab source for serverless package
@@ -119,3 +132,7 @@ export PPM_VM_IP=192.168.57.101
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /Users/jtrinklein/.nodenv/versions/6.10.2/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/jtrinklein/.nodenv/versions/6.10.2/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/jtrinklein/.nodenv/versions/10.15.3/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/jtrinklein/.nodenv/versions/10.15.3/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh

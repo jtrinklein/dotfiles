@@ -13,9 +13,9 @@ brew "zsh-completions"
 
 cask "dropbox"
 cask "opera"
+cask "firefox"
 cask "private-internet-access"
 cask "vlc"
 cask "the-unarchiver"
 cask "skitch"
-
 

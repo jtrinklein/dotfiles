@@ -8,13 +8,3 @@ if ! dscl . -read "$HOME" UserShell | grep -q -E "zsh"; then
   chsh -s /bin/zsh $USER
 fi
 
-
-# Install Daptiv Projects --------------
-SETUP_SCRIPT="$HOME/.daptiv-dotfiles/projects/setup"
-
-# TTM -----
-if [ -f "$SETUP_SCRIPT" ]; then
-    bash "$SETUP_SCRIPT" ttm
-    bash "$SETUP_SCRIPT" new-feature-popup
-fi
-
