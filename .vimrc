@@ -28,6 +28,9 @@ Plugin 'chr4/nginx.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
+" show hidden files by default in NERDTree
+let NERDTreeShowHidden=1
+
 execute pathogen#infect()
 filetype plugin indent on
 map <C-o> :NERDTreeToggle<CR>
