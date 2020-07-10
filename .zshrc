@@ -124,6 +124,7 @@ alias f="fuck"
 
 export GPG_TTY=$(tty)
 
+eval "$( rbenv init -)"
 
 
 # tabtab source for serverless package
