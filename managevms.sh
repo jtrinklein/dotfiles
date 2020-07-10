@@ -1,6 +1,6 @@
 export DEV_VMX="$HOME/src/dev_ppm/.vagrant/machines/default/vmware_fusion/538097f6-4aa0-48fa-bea7-fb129cd997a4/packer-vmware-vmx-{{timestamp}}.vmx"
 export IE10_VMX="$HOME/IE VMs/IE10 - Win7.vmwarevm/IE10 - Win7.vmx"
-export DEV_VM_ID="prl-dev_ppm"
+export DEV_VM_ID="dev_ppm"
 
 findVm() {
     local vm=${1:-dev_ppm}
@@ -14,7 +14,7 @@ findVm() {
 vm() { 
 
     local command=$1
-    local vmname=${2:-prl-dev_ppm}
+    local vmname=${2:-dev_ppm}
 
     case "$command" in
         start)
